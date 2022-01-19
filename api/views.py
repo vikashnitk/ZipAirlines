@@ -25,7 +25,7 @@ def airplanes(request):
 				serializer.save()
 				return Response(serializer.data,status=status.HTTP_201_CREATED)
 			else:
-				return JsonResponse({'Message': 'Cannot insert more than 10 airplanes data'})			
+				return Response({"Message": "Cannot insert more than 10 airplanes data"},status=status.HTTP_202_ACCEPTED)		
 		return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','POST'])

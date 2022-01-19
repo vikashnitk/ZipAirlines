@@ -30,8 +30,9 @@ class AirlineAPITestCase(APITestCase):
 		      {'id': 9, 'passenger':200},{'id':10, 'passenger':100},{'id':11, 'passenger':100}]
 		for i in range(len(data)):
 			response=self.client.post(url,data[i],format='json')
-		responseData = '{"Message": "Cannot insert more than 10 airplanes data"}'
-		self.assertEqual(response.content, str.encode(responseData))
+		# responseData = '{"Message": "Cannot insert more than 10 airplanes data"}'
+		# self.assertEqual(response.content, str.encode(responseData))
+		self.assertEqual(response.status_code,202)
 
 	def test_post_method_fail(self):
 		url='http://127.0.0.1:8000/'
